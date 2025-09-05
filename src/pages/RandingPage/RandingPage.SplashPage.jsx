@@ -40,7 +40,6 @@ function SplashPage() {
                             이야기를 엮어 데뷔 무대에 세울 수 있는 유일한 존재예요. 
                             한 명의 성격, 한 번의 선택이 곧 그룹의 표정과 리듬이 됩니다.
                             모든 가능성은 당신이 빚어낼 수 있는 재료일 뿐이에요.`}
-                            
                         </itemS.LetterContentText>
                         <itemS.LetterContentText>
                             {`
