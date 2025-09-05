@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import React from 'react';
 import './App.css';
 import './css/community.css';
-import icon './img/voteicon.png'
+
 
 function App() {
   return (
