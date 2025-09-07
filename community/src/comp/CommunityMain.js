@@ -1,15 +1,9 @@
-import logo from './logo.svg';
-import React from 'react';
-import './App.css';
-import './css/community.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import CheerArtist from './comp/CheerArtist';
+import React,{useState} from 'react';
 
+const CommunityMain = ({CommunityMain}) =>{
+    return(
+            <div className='Maincontainer'>
 
-function App() {
-  return (
-    <Router>
-    <div className='Maincontainer'>
       {/* 상단 헤더 */}
       <header className="header">
         <nav className="nav">
@@ -33,13 +27,13 @@ function App() {
         <section className='voting-section'>
           <div className='sectionTop'>
             <h1 className='section-title'>
-              <img src="./voteicion.png"></img>투표하기
+              <img src="/img/voteicon.png" />투표하기
             </h1>
           </div>
 
           <div className='banner-container'>
             {/* 이전으로 넘어가기 */}
-            <div className='prevBtn'><img src="./img/previous.png" /></div>
+            <div className='prevBtn'><img src="/img/previous.png" /></div>
             {/* 카드 배너 */}
             <div className='slider'>
               <div className='slide'>
@@ -48,26 +42,26 @@ function App() {
                       <h3 className='vote-title'>응원봉 투표하기</h3>
                       <p className='vote-date'>2025.09.03~2025.09.24</p>
                   </div>
-                  <div className='vote-img'><img src="./img/next.png"></img></div>
+                  <div className='vote-img'><img src="/img/image2.png"></img></div>
                 </div>
                 <div className='vote-card'>
                   <div className='vote-content'>
                       <h3 className='vote-title'>유닛조합 투표하기</h3>
                       <p className='vote-date'>2025.09.03~2025.09.24</p>
                   </div>
-                  <div className='vote-img'><img src="./next.png"></img></div>
-                </div>               
+                  <div className='vote-img'><img src="/img/image2.png"></img></div>
+                </div>
                 <div className='vote-card'>
                   <div className='vote-content'>
                       <h3 className='vote-title'>투표결과 확인</h3>
                       <p className='vote-date'>2025.09.03~2025.09.24</p>
                   </div>
-                  <div className='vote-img'><img src="./img/next.png"></img></div>
+                  <div className='vote-img'><img src="/img/image2.png"></img></div>
                 </div>
               </div>
             </div>
             {/* 다음으로 넘어가기 */}
-            <div className='nextBtn'><img src="" /></div>
+            <div className='nextBtn'><img src="/img/next.png"/></div>
           </div>
         </section>
       </div>
@@ -92,23 +86,16 @@ function App() {
           </div>
           </section>
           <div className='puzzle-Section'>
-            <Link to="/cheer">
             <div className='puzzle-item'>
               <h2>응원하는 댓글을</h2>
               <h2>남기고<span className='puzzle' >퍼즐</span>을</h2>
               <h2>완성시켜주세요</h2>
             </div>
-            <div className='puzzle-img'><img src="/img/puzzle.png"></img></div>
-            </Link>
+            <div className='puzzle-img'><img src="/img/puzzle.png" /></div>
           </div>
       </div>
 
     </div>
-    <Routes>
-      <Route path="/cheer" element={<CheerArtist />} />
-    </Routes>
-  </Router>
-  );
+    )
 }
-
-export default App;
+export default CommunityMain;
