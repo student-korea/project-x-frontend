@@ -50,7 +50,7 @@ const StartPage = ({ onStart, onClose, selectedCharacter }) => {
             </h3>
 
             <div className="test-info" aria-hidden="true">
-              <div className="info-pill"><span className="info-icon">⏱️</span><span>약 3분</span></div>
+              <div className="info-pill"><span className="info-icon">⏱️</span><span>약 2분</span></div>
               <div className="info-pill"><span className="info-icon">📝</span><span>9문항</span></div>
             </div>
 

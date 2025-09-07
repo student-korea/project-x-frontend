@@ -65,12 +65,9 @@ export default function CharacterSelectPage() {
           <button
             onClick={openStart}
             style={{
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              color: '#fff',
+              background: '#87b2d4',
               border: 'none',
-              borderRadius: 10,
               padding: '10px 16px',
-              fontWeight: 600,
               cursor: 'pointer',
             }}
           >

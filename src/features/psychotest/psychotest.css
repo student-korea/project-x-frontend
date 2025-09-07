@@ -1,6 +1,66 @@
 /* src/features/psychotest/psychotest.css */
 
-/* 공통 레이아웃 */
+/* =========================
+   Theme tokens (CSS variables)
+   ========================= */
+:root {
+  /* base palette (cool: blue-lilac) */
+  --c1: #87b2d4;   /* sky */
+  --c2: #667eea;   /* indigo (brand) */
+  --c3: #a78bfa;   /* lilac */
+  --c4: #f0abfc;   /* light pink-lilac accent */
+
+  --surface: #f8f9ff;
+  --text-strong: #2c3e50;
+  --text-muted: #666;
+
+  /* gradients */
+  --grad-header:   linear-gradient(135deg, var(--c1) 0%, #8aa7ff 52%, var(--c3) 100%);
+  --grad-hero:     linear-gradient(135deg, var(--c2) 0%, var(--c3) 100%);
+  --grad-cta:      linear-gradient(135deg, var(--c2) 0%, var(--c3) 60%, var(--c4) 100%);
+  --grad-pill:     linear-gradient(135deg, #8ed0ff 0%, #7aa5ff 45%, #9a8bff 100%);
+  --grad-progress: linear-gradient(135deg, var(--c2) 0%, var(--c3) 100%);
+}
+
+/* optional themes: add class on <body> or top wrapper */
+/* warm (sunset) */
+.theme-warm {
+  --c1: #ffd1a1; --c2: #ff7eb3; --c3: #a770ef; --c4: #ff9a9e;
+  --grad-header:   linear-gradient(135deg, #ffd1a1 0%, #ff9a9e 45%, #a770ef 100%);
+  --grad-hero:     linear-gradient(135deg, #ff7eb3 0%, #a770ef 100%);
+  --grad-cta:      linear-gradient(135deg, #ff7eb3 0%, #ff9a9e 55%, #ffd1a1 100%);
+  --grad-pill:     linear-gradient(135deg, #ffd1a1 0%, #ff9a9e 45%, #a770ef 100%);
+  --grad-progress: linear-gradient(135deg, #ff7eb3 0%, #ff9a9e 100%);
+}
+/* mint (cool mint-cyan) */
+.theme-mint {
+  --c1: #a8ff78; --c2: #78ffd6; --c3: #6ab3ff; --c4: #9aa5ff;
+  --grad-header:   linear-gradient(135deg, #a8ff78 0%, #78ffd6 45%, #6ab3ff 100%);
+  --grad-hero:     linear-gradient(135deg, #6ab3ff 0%, #78ffd6 100%);
+  --grad-cta:      linear-gradient(135deg, #6ab3ff 0%, #78ffd6 60%, #a8ff78 100%);
+  --grad-pill:     linear-gradient(135deg, #78ffd6 0%, #6ab3ff 45%, #9aa5ff 100%);
+  --grad-progress: linear-gradient(135deg, #6ab3ff 0%, #78ffd6 100%);
+}
+/* night (indigo-cyan) */
+.theme-night {
+  --c1: #1f2a44; --c2: #4f46e5; --c3: #06b6d4; --c4: #22d3ee;
+  --grad-header:   linear-gradient(135deg, #1f2a44 0%, #4f46e5 50%, #06b6d4 100%);
+  --grad-hero:     linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+  --grad-cta:      linear-gradient(135deg, #4f46e5 0%, #06b6d4 60%, #22d3ee 100%);
+  --grad-pill:     linear-gradient(135deg, #243b55 0%, #4f46e5 50%, #06b6d4 100%);
+  --grad-progress: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+}
+
+/* subtle gradient animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+/* =========================
+   Common layout
+   ========================= */
 .modal-container {
   position: fixed; inset: 0;
   background: rgba(0,0,0,.6);
@@ -9,19 +69,33 @@
 }
 
 .test-modal {
-  background: linear-gradient(145deg, #ffffff, #f8f9ff);
+  background: linear-gradient(145deg, #ffffff, var(--surface));
   width: 90%; max-width: 400px;
   height: 85vh; max-height: 700px;
   border-radius: 20px;
   display: flex; flex-direction: column; overflow: hidden; position: relative;
   box-shadow: 0 20px 60px rgba(0,0,0,.15), 0 0 0 1px rgba(255,255,255,.8);
 }
+/* soft texture overlay */
+.test-modal::after {
+  content: '';
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 6px 6px;
+  mix-blend-mode: overlay;
+  opacity: .35;
+}
 
-/* 헤더 */
+/* =========================
+   Header
+   ========================= */
 .header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--grad-header);
+  background-size: 180% 180%;
   padding: 20px; text-align: center; position: relative; color: #fff; flex-shrink: 0;
 }
+.header:hover { animation: gradientShift 6s ease infinite; }
 .title { font-size: 17px; font-weight: 600; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,.1); }
 .close-button {
   position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
@@ -32,19 +106,25 @@
 }
 .close-button:hover { background: rgba(255,255,255,.3); transform: translateY(-50%) scale(1.1); }
 
-/* 공통 콘텐츠 래퍼 */
+/* content wrapper */
 .content { flex: 1; padding: 30px 25px 20px; overflow-y: auto; position: relative; }
 
-/* StartPage 전용 */
+/* =========================
+   StartPage
+   ========================= */
 .hero-section { text-align: center; margin-bottom: 35px; position: relative; }
 .logo-container {
-  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  /* layered: radial highlight + hero gradient */
+  background-image:
+    radial-gradient(120% 90% at 85% -10%, rgba(255,255,255,.35) 0%, transparent 60%),
+    var(--grad-hero);
+  background-blend-mode: screen, normal;
   border-radius: 20px; padding: 25px; margin: 0 auto 20px; width: fit-content;
-  box-shadow: 0 10px 30px rgba(255,107,157,.3); position: relative; overflow: hidden;
+  box-shadow: 0 10px 30px rgba(24, 41, 194, 0.25); position: relative; overflow: hidden;
 }
 .logo-container::before {
   content:''; position:absolute; inset:0;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,.1), transparent);
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,.12), transparent);
   transform: translateX(-100%); animation: shine 3s infinite;
 }
 @keyframes shine { 0%{transform:translateX(-100%)} 50%{transform:translateX(100%)} 100%{transform:translateX(100%)} }
@@ -65,27 +145,44 @@
 }
 
 .description-section { text-align:center; }
-.main-description { font-size:1.3rem; font-weight:600; color:#2c3e50; line-height:1.4; margin:0 0 25px; }
-.highlight { background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:700; }
+.main-description { font-size:1.3rem; font-weight:600; color:var(--text-strong); line-height:1.4; margin:0 0 25px; }
+.highlight {
+  background: linear-gradient(135deg, var(--c2), var(--c3));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:700;
+}
 .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-bottom:25px; }
+.feature-item { background: rgba(102,126,234,.08); border-radius:12px; padding:15px 8px; transition: all .3s ease; }
+.feature-item:hover { background: rgba(102,126,234,.15); transform: translateY(-2px); }
 .feature-icon { font-size:1.5rem; margin-bottom:8px; }
 .feature-text { font-size:.8rem; font-weight:500; color:#555; }
 .test-info { display:flex; justify-content:center; gap:15px; margin-bottom:20px; }
-.info-pill { background: linear-gradient(135deg, #f093fb, #f5576c); color:#fff; padding:8px 16px; border-radius:20px;
-  font-size:.85rem; font-weight:500; display:flex; align-items:center; gap:6px; box-shadow:0 4px 15px rgba(240,147,251,.3);}
+.info-pill {
+  background: var(--grad-pill); color:#fff; padding:8px 16px; border-radius:20px;
+  font-size:.85rem; font-weight:500; display:flex; align-items:center; gap:6px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
 .info-icon{ font-size:1rem; }
-.sub-description { font-size:.9rem; color:#666; line-height:1.5; margin:0; }
+.sub-description { font-size:.9rem; color:var(--text-muted); line-height:1.5; margin:0; }
 
 .footer { padding:25px; background: linear-gradient(to top, rgba(255,255,255,.9), transparent); flex-shrink:0; }
 
-/* 시작 버튼 */
+
 .start-button {
-  width:100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* 이 버튼 안에서만 CTA 색 = 헤더 색 */
+  --grad-cta: var(--grad-header);
+
+  width:100%;
+  background: var(--grad-cta);
+  background-size: 200% 200%;
   border:none; border-radius:16px; padding:0; cursor:pointer; position:relative; overflow:hidden;
   box-shadow:0 8px 25px rgba(102,126,234,.4); transition: all .3s ease;
 }
-.start-button:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(102,126,234,.5); }
+.start-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(102,126,234,.5);
+  animation: gradientShift 3s ease infinite;
+}
+
 .start-button:active { transform: translateY(0); }
 .button-content { display:flex; align-items:center; justify-content:center; padding:16px 24px; color:#fff; position:relative; z-index:2; }
 .button-text { font-size:1.1rem; font-weight:600; flex:1; text-align:center; }
@@ -94,7 +191,9 @@
 .button-glow { position:absolute; inset:0; left:-100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent); transition:left .6s ease; }
 .start-button:hover .button-glow { left: 100%; }
 
-/* QuestionPage 전용 */
+/* =========================
+   QuestionPage
+   ========================= */
 .progress-info { font-size:14px; color:#eee; margin-top:5px; }
 .question-section { text-align:center; margin-bottom:60px; }
 .question-text { font-size:18px; font-weight:500; color:#333; line-height:1.4; margin:0; }
@@ -111,11 +210,31 @@
 .nav-button:disabled, .nav-button.disabled { color:#ccc; cursor:not-allowed; }
 .page-indicator { color:#999; font-size:12px; }
 
+/* slim scroll */
 .content::-webkit-scrollbar { width:4px; }
 .content::-webkit-scrollbar-track { background: transparent; }
 .content::-webkit-scrollbar-thumb { background: rgba(102,126,234,.3); border-radius:2px; }
 
-/* ResultPage 전용 */
+/* progress bar */
+.progress {
+  width: 100%;
+  height: 6px;
+  background: rgba(102,126,234,.15);
+  border-radius: 999px;
+  margin: 0 0 16px 0;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--grad-progress);
+  border-radius: 999px;
+  transition: width .25s ease;
+}
+
+/* =========================
+   ResultPage
+   ========================= */
 .character-section { text-align:center; margin-bottom:20px; }
 .character-image-container { display:inline-block; border:3px solid #4a90e2; border-radius:12px; overflow:hidden; margin-bottom:15px; }
 .character-image { width:200px; height:200px; object-fit:cover; display:block; }
@@ -137,7 +256,30 @@
 }
 .retry-button:hover { background:#5a6268; }
 
-/* 모바일 */
+/* selected character pill (if used) */
+.selected-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: rgba(102,126,234,.12);
+  color: #3b4aa8;
+  margin-bottom: 10px;
+}
+
+/* placeholder image */
+.character-image.placeholder {
+  width: 200px; height: 200px;
+  display: grid; place-items: center;
+  background: #eef1ff;
+  color: #667eea; font-size: 48px;
+}
+
+/* =========================
+   Mobile
+   ========================= */
 @media (max-width:480px) {
   .test-modal { width:95%; height:90vh; border-radius:16px; }
   .header { padding:18px; }
@@ -151,38 +293,4 @@
   .character-image { width:180px; height:180px; }
   .character-name { font-size:18px; }
   .description-section { padding:15px 12px; }
-}
-.progress {
-  width: 100%;
-  height: 6px;
-  background: rgba(102,126,234,.15);
-  border-radius: 999px;
-  margin: 0 0 16px 0;
-  overflow: hidden;
-}
-.progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 999px;
-  transition: width .25s ease;
-}
-
-.selected-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  background: rgba(102,126,234,.12);
-  color: #3b4aa8;
-  margin-bottom: 10px;
-}
-
-.character-image.placeholder {
-  width: 200px; height: 200px;
-  display: grid; place-items: center;
-  background: #eef1ff;
-  color: #667eea; font-size: 48px;
 }
