@@ -1,12 +1,233 @@
-*{margin:0px auto;}
-a {text-decoration:none;}
-.container{position:fixed; background-color: ffffff;  justify-items: center; 
-  width: 1920px; height:1080px;
+*{
+  margin:0 auto; padding:0; box-sizing: border-box;
 }
-.headerNav{position:relative;width:1920px;height:70px; 
-  background-color: #b3d1f0;
-} 
-.headerNav .headerCategory{width:1271px; height:35px;
-    display: flex;float: left;text-align: center;margin-top: 20px;font-weight: 700;font-size: 1.4em;}
-.headerLogin{width: 180px; height: 52px; float: right;margin-top: 30px;font-weight: 700;font-size: 1.4em;}
-.headerCategory .navbar{}
+
+body{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  min-height: 100vh;
+}
+
+/* 헤더 */
+.header{
+  background: #B3D1F0;
+  padding: 15px 0;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  
+}
+.logo{
+  font-weight: 400;
+  color: #333;
+  font-size: 16px;
+  font-style: italic;
+}
+.nav-menu{
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+.nav-menu a{
+  text-decoration: none;
+  color: #333;
+  font-weight: 600; 
+  transition: color 0.3s;
+}
+.nav-menu a:hover{
+  margin-bottom: 5px;
+}
+.user-menu{
+  font-weight:600;
+  text-decoration: none;
+  color: #333;
+
+}
+
+/* 메인 컨테이너 */
+.Container{
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+/* 배너부분 */
+.sectionTop{
+  display: block;
+ padding-left: 150px;
+}
+.banner-container{
+  display: flex;
+}
+.section-title {
+  align-items: center;
+  gap: 10px;
+  font-size: 38px;
+  font-weight:bold;
+  color: #606060;
+  margin-bottom: 20px;
+}
+.section-title img{
+  width:30px;
+  height:30px;
+}
+/* 슬라이드 배너 */
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+.slide{
+  min-width: 33.333%;
+  padding: 0 10px;
+  display:flex;
+}
+.vote-content{
+  width: 35%;
+}
+.vote-card{
+  border-radius: 40px;
+  padding: 20px;
+  width: 402px;
+  height : 170px;
+  background-color: #F82878;
+  color:#ffffff;
+  position:relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+/* .vote-card::before{
+  content:'';
+  position: relative;
+  top: 0;
+  right:0;
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  opacity: 0.8;
+} */
+
+.vote-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  z-index: 1;
+  position: relative;
+}
+.vote-date {
+  font-size: 12px;
+  opacity: 0.9;
+  z-index: 1;
+}
+.vote-img {
+  position:absolute;
+  right: -20px;
+  top: 50%;
+  width: 150px;
+  height: 120px;
+  opacity: 0.7;
+}
+.prevBtn{
+  left:10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.prevBtn img{
+  width: 40px;
+  height: 40px;
+}
+.nextBtn{
+  left:10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nextBtn img{
+  width: 40px;
+  height: 40px;
+}
+.contents-Container{
+  max-width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;  
+  gap: 30px;
+  align-items: flex-start;
+}
+.contents-Section h1{
+  margin-bottom: 23px; 
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 38px;
+  color : #606060;
+}
+.board-item{
+  border: 1px solid #A3B2CE;
+  background-color: #F7F5FF;
+  border-radius: 40px;
+  width: 900px;
+  height: 140px;
+  padding: 35px;
+  margin-bottom: 30px;
+}
+.board-item p{
+  margin-top: 10px;
+  color: #F82878;
+  font-size: 20px;
+  font-weight: bold          ;
+}
+.puzzle-Section{
+  border: 1px solid #A3B2CE; border-radius: 40px;
+  background-color: #F7F5FF;
+  width:468px;
+  height:549px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 4px 50px #cecdcd;
+}
+.puzzle-item{
+  margin-top: 150px;
+}
+.puzzle-item h2{
+  font-size: 30px;
+  text-align: left;
+}
+.puzzle-item .puzzle{
+  color: #F82878;
+}
+.puzzle-img img{
+  width:80px;
+  height:80px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .nav-menu {
+        gap: 15px;
+    }
+
+    .slide {
+        min-width: 100%;
+    }
+
+    .content-area {
+        flex-direction: column;
+    }
+
+    .vote-card {
+        height: 150px;
+    }
+
+    .vote-title {
+        font-size: 18px;
+    }
+}
