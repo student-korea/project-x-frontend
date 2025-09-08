@@ -197,7 +197,7 @@ export function StartPage({ onStart, onClose }) {
           <h3 className="main-description">
             심리테스트로 찾는
             <br />
-            <span className="highlight">나만의 버추얼 아이돌</span>
+            <span className="highlight">나의 최애 버추얼 아이돌</span>
           </h3>
 
           <div className="test-info" aria-hidden="true">
