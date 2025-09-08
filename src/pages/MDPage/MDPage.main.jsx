@@ -50,7 +50,7 @@ function MDPage() {
       style={mdPageStyles.productCard}
       onMouseEnter={hoverEffects.productCard.onMouseEnter}
       onMouseLeave={hoverEffects.productCard.onMouseLeave}
-      onClick={() => navigate(`/product/${product.id}`)}
+      onClick={() => navigate(`/MD/product/${product.id}`)}
     >
       <div style={mdPageStyles.productImageContainer}>
         상품 이미지
