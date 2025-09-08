@@ -1,6 +1,6 @@
 // src/App.jsx
 import { useState } from "react";
-import PsyControl from "./features/psychotest/PsyControl.jsx";
+import PsyControl from "./pages/psychotest/PsyControl.jsx";
 
 export default function App() {
   const [view, setView] = useState("home"); // 'home' | 'select'
