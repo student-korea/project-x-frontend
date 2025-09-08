@@ -478,7 +478,7 @@ function ResultInfo({ name, personality, description, details=[], compatibility,
     <div>
       <CharacterInfo>
         <CharacterName>{name}</CharacterName>
-        {personality ? <PersonalityTag>☆ 중심 : {personality}</PersonalityTag> : null}
+        {personality ? <PersonalityTag>☆ 나의 최애 성격 : {personality}</PersonalityTag> : null}
       </CharacterInfo>
 
       <ResultDescWrap>
