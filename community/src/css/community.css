@@ -6,7 +6,14 @@ body{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   min-height: 100vh;
 }
-
+a {
+  text-decoration: none;
+  list-style: none;
+  color: #333;
+}
+.ContentContainer{
+  padding: 30px;
+}
 /* 헤더 */
 .header{
   background: #B3D1F0;
@@ -52,24 +59,27 @@ body{
   padding: 30px 20px;
 }
 /* 배너부분 */
-.sectionTop{
-  display: block;
- padding-left: 150px;
-}
 .banner-container{
   display: flex;
+}
+.sectionTop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 179px;
+    margin-bottom: 10px;
 }
 .section-title {
   align-items: center;
   gap: 10px;
-  font-size: 38px;
+  font-size: 28px;
   font-weight:bold;
   color: #606060;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
-.section-title img{
-  width:30px;
-  height:30px;
+.voteImg img {
+  width: 40px;             /* 이미지 크기 조절 */
+  height: auto;
 }
 /* 슬라이드 배너 */
 .slider-container {
@@ -77,25 +87,14 @@ body{
   overflow: hidden;
   border-radius: 15px;
 }
+.slider {
+  height: 230px;
+}
 .slide{
   min-width: 33.333%;
   padding: 0 10px;
   display:flex;
-}
-.vote-content{
-  width: 35%;
-}
-.vote-card{
-  border-radius: 40px;
-  padding: 20px;
-  width: 402px;
-  height : 170px;
-  background-color: #F82878;
-  color:#ffffff;
-  position:relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
+  gap: 20px;
 }
 /* .vote-card::before{
   content:'';
@@ -107,29 +106,50 @@ body{
   background-size: contain;
   opacity: 0.8;
 } */
+.vote-card {
+  border-radius: 40px;
+  width: 320px;
+  height: 150px;
+  padding: 15px;
+  background-color: #F82878;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  gap:5px;
+  align-items: center;
+}
+.vote-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 146px;
+  margin-top: 50px;
+}
 
 .vote-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
   z-index: 1;
   position: relative;
+  word-wrap: break-word;   /* 단어 단위로 줄바꿈 */
+  overflow-wrap: break-word; /* 최신 표준 */
+  white-space: normal;     /* 줄바꿈 허용 */
 }
 .vote-date {
-  font-size: 12px;
+   font-size: 11px; 
   opacity: 0.9;
   z-index: 1;
 }
-.vote-img {
-  position:absolute;
-  right: -20px;
-  top: 50%;
-  width: 150px;
-  height: 120px;
-  opacity: 0.7;
+
+.vote-img img{
+  width: 200px;
+  height: auto;
 }
 .prevBtn{
-  left:10px;
+  left: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -155,7 +175,7 @@ body{
   padding-left: 40px;
   padding-right: 40px;
   display: flex;  
-  gap: 30px;
+  gap: 95px;
   align-items: flex-start;
 }
 .contents-Section{
@@ -165,7 +185,7 @@ body{
   margin-bottom: 23px; 
   margin-left: 10px;
   font-weight: bold;
-  font-size: 38px;
+  font-size: 28px;
   color : #606060;
 }
 .board-item{
@@ -184,53 +204,98 @@ body{
   font-weight: bold          ;
 }
 .puzzle-Section{
-  border: 1px solid #A3B2CE; border-radius: 40px;
+  border: 1px solid #A3B2CE;
+  border-radius: 40px;
   background-color: #F7F5FF;
   width: 40%;
-  height:540px;
+  height: 500px;
   padding: 40px;
   text-align: center;
   box-shadow: 0 4px 50px #cecdcd;
+  margin-top: 30px;
 }
 .puzzle-item{
   margin-top: 150px;
 }
 .puzzle-item h2{
-  font-size: 30px;
+  font-size: 24px;
   text-align: left;
 }
 .puzzle-item .puzzle{
   color: #F82878;
 }
-.puzzle-img img{
-  width:80px;
-  height:80px;
-  margin: 20px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+.puzzle-img {
+    width: 200px;
+    margin-left: 133px;
+}
+.puzzle-img img {
+    width: 160px;
+    height: 160px;
+    margin: 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+/* 반응형: 태블릿 이하 */
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: 24px;
+  }
+
+  .vote-card {
+    width: 280px;
+    height: 140px;
+  }
+
+  .contents-Section h1 {
+    font-size: 24px;
+  }
+
+  .puzzle-item h2 {
+    font-size: 22px;
+  }
 }
 
-/* 반응형 */
+/* 반응형: 모바일 이하 */
 @media (max-width: 768px) {
-    .nav-menu {
-        gap: 15px;
-    }
+  .nav-menu {
+    gap: 12px;
+  }
 
-    .slide {
-        min-width: 100%;
-    }
+  .slide {
+    min-width: 100%;
+  }
 
-    .content-area {
-        flex-direction: column;
-    }
+  .contents-Container {
+    flex-direction: column;
+    padding: 20px;
+  }
 
-    .vote-card {
-        height: 150px;
-    }
+  .contents-Section,
+  .puzzle-Section {
+    width: 100%;
+  }
 
-    .vote-title {
-        font-size: 18px;
-    }
+  .vote-card {
+    width: 100%;
+    height: 130px;
+  }
+
+  .vote-title {
+    font-size: 16px;
+  }
+
+  .contents-Section h1 {
+    font-size: 22px;
+  }
+
+  .puzzle-item h2 {
+    font-size: 20px;
+  }
+
+  .puzzle-img img {
+    width: 50px;
+    height: 50px;
+  }
 }
