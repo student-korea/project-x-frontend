@@ -5,7 +5,7 @@ import './App.css'
 import { Route, Routes, Link } from "react-router-dom";
 import SplashPage from './pages/RandingPage/RandingPage.SplashPage';
 import SelectMemberPage from './pages/RandingPage/RandingPage.SelectMemberPage';
-
+import LightStickCustomPage from "./pages/light_stick/light_stick.CustomPage.jsx";
 
 function App() {
 
@@ -14,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SplashPage />} />
         <Route path="/selectMember" element={<SelectMemberPage />} />
+        <Route path="/light_stick" element={<LightStickCustomPage />} />
       </Routes>
     </>
   )
