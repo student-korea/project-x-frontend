@@ -183,6 +183,7 @@ const TestModal = styled.div`
   border-radius:20px; display:flex; flex-direction:column;
   overflow:hidden; position:relative;
   box-shadow: ${({theme})=>theme.shadow.modal};
+  line-height: 1.4; /* ← reset.css/body의 1을 여기서 끊어줌 */
 
   /* 패턴 텍스처 오버레이 */
   &::after{
