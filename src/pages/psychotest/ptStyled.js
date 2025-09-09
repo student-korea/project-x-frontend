@@ -1,24 +1,28 @@
 import styled, { keyframes } from "styled-components";
 
-/* keyframes */
-const gradientShift = keyframes`
+/* =======================
+ * Keyframes
+ * ======================= */
+export const gradientShift = keyframes`
   0% { background-position: 0% 50% }
   50% { background-position: 100% 50% }
   100% { background-position: 0% 50% }
 `;
-const shine = keyframes`
+export const shine = keyframes`
   0%{transform:translateX(-100%)}
   50%{transform:translateX(100%)}
   100%{transform:translateX(100%)}
 `;
-const floatKF = keyframes`
+export const floatKF = keyframes`
   0%,100%{ transform: translateY(0) rotate(0) }
   25%{ transform: translateY(-8px) rotate(2deg) }
   50%{ transform: translateY(-4px) rotate(-1deg) }
   75%{ transform: translateY(-6px) rotate(1deg) }
 `;
 
-/* 레이아웃 */
+/* =======================
+ * Layout
+ * ======================= */
 export const ModalContainerWrap = styled.div`
   position: fixed; inset: 0;
   background: rgba(0,0,0,.6);
@@ -27,9 +31,13 @@ export const ModalContainerWrap = styled.div`
 `;
 export const TestModal = styled.div`
   background: linear-gradient(145deg, #ffffff, ${({theme})=>theme.color.surface});
-  width:90%; max-width:400px; height:85vh; max-height:700px;
-  border-radius:20px; display:flex; flex-direction:column; overflow:hidden; position:relative;
+  width:90%; max-width:400px;
+  height:85vh; max-height:700px;
+  border-radius:20px; display:flex; flex-direction:column;
+  overflow:hidden; position:relative;
   box-shadow:${({theme})=>theme.shadow.modal};
+  line-height: 1.4;
+
   &::after{
     content:''; position:absolute; inset:0; pointer-events:none;
     background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
@@ -40,6 +48,7 @@ export const Header = styled.div`
   background:${({theme})=>theme.grad.header};
   background-size:180% 180%;
   padding:20px; text-align:center; position:relative; color:#fff; flex-shrink:0;
+
   &:hover { animation:${gradientShift} 6s ease infinite; }
 `;
 export const Title = styled.h1`
@@ -59,6 +68,7 @@ export const ProgressInfo = styled.div`
 `;
 export const Content = styled.div`
   flex:1; padding:30px 25px 20px; overflow-y:auto; position:relative;
+
   &::-webkit-scrollbar { width:4px; }
   &::-webkit-scrollbar-track { background: transparent; }
   &::-webkit-scrollbar-thumb { background: rgba(102,126,234,.3); border-radius:2px; }
@@ -68,13 +78,36 @@ export const Footer = styled.div`
   flex-shrink:0;
 `;
 
-/* CTA 버튼 */
+/* =======================
+ * Progress
+ * ======================= */
+export const Progress = styled.div.attrs(({value})=>({
+  role:'progressbar',
+  'aria-label': `진행도 ${value}%`,
+  'aria-valuemin': 0,
+  'aria-valuemax': 100,
+  'aria-valuenow': value ?? 0
+}))`
+  width:100%; height:6px; background: rgba(102,126,234,.15);
+  border-radius:999px; margin:0 0 16px 0; overflow:hidden;
+`;
+export const ProgressFill = styled.div`
+  height:100%;
+  width: ${({value}) => `${value}%`};
+  background: ${({theme})=>theme.grad.progress};
+  border-radius:999px; transition: width .25s ease;
+`;
+
+/* =======================
+ * Buttons
+ * ======================= */
 export const StartButton = styled.button`
   width:100%;
   background:${({theme})=>theme.grad.header};
   background-size:200% 200%;
   border:none; border-radius:16px; padding:0; cursor:pointer; position:relative; overflow:hidden;
   box-shadow:${({theme})=>theme.shadow.cta}; transition:all .3s ease;
+
   &:hover { transform: translateY(-2px); box-shadow:${({theme})=>theme.shadow.ctaHover}; animation:${gradientShift} 3s ease infinite; }
   &:active { transform: translateY(0); }
 `;
@@ -92,10 +125,24 @@ export const ButtonGlow = styled.div`
   position:absolute; inset:0; left:-100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
   transition:left .6s ease;
-  ${StartButton}:hover & { left:100%; }
+  ${StartButton}:hover & { left: 100%; }
+`;
+export const OptionBtn = styled.button`
+  background: ${({$selected}) => ($selected ? '#4a90e2' : '#2c2c2c')};
+  color:#fff; border:none; border-radius:8px;
+  padding:20px 16px; font-size:14px; line-height:1.4; text-align:left;
+  cursor:pointer; transition:all .2s ease; min-height:60px; display:flex; align-items:center;
+
+  &:hover { background: ${({$selected}) => ($selected ? '#4a90e2' : '#3c3c3c')}; }
+`;
+export const NavBtn = styled.button`
+  background:none; border:none; color:#4a90e2; font-size:14px; cursor:pointer; padding:8px 12px; min-width:50px; text-align:center;
+  &:disabled { color:#ccc; cursor:not-allowed; }
 `;
 
-/* 히어로 */
+/* =======================
+ * Hero
+ * ======================= */
 export const HeroWrap = styled.div`
   text-align:center; margin-bottom:35px; position:relative;
 `;
@@ -106,6 +153,7 @@ export const LogoContainer = styled.div`
   background-blend-mode: screen, normal;
   border-radius:20px; padding:25px; margin: 0 auto 20px; width: fit-content;
   box-shadow:${({theme})=>theme.shadow.logo}; position:relative; overflow:hidden;
+
   &::before{
     content:''; position:absolute; inset:0;
     background: linear-gradient(45deg, transparent, rgba(255,255,255,.12), transparent);
@@ -125,9 +173,11 @@ export const Star  = styled(FloatBase)` top:15%; right:15%; animation-delay:1s; 
 export const Music = styled(FloatBase)` bottom:40%; left:15%; animation-delay:2s; `;
 export const Sparkle = styled(FloatBase)` bottom:30%; right:10%; animation-delay:3s; `;
 
-/* 설명 블럭 */
-export const DescWrap = styled.div` text-align:center; `;
-export const MainDesc = styled.h3`
+/* =======================
+ * Copy blocks (Start page)
+ * ======================= */
+export const DescriptionSection = styled.div` text-align:center; `;
+export const MainDescription = styled.h3`
   font-size:1.3rem; font-weight:600; color:${({theme})=>theme.color.textStrong}; line-height:1.4; margin:0 0 25px;
 `;
 export const Highlight = styled.span`
@@ -137,8 +187,51 @@ export const Highlight = styled.span`
 export const TestInfo = styled.div` display:flex; justify-content:center; gap:15px; margin-bottom:20px; `;
 export const Pill = styled.div`
   background:${({theme})=>theme.grad.pill}; color:#fff; padding:8px 16px; border-radius:20px;
-  font-size:.85rem; font-weight:500; display:flex; align-items:center; gap:6px;
-  box-shadow:${({theme})=>theme.shadow.pill};
+  font-size:.85rem; font-weight:500; display:flex; align-items:center; gap:6px; box-shadow:${({theme})=>theme.shadow.pill};
 `;
 export const InfoIcon = styled.span` font-size:1rem; `;
-export const SubDesc = styled.p` font-size:.9rem; color:${({theme})=>theme.color.textMuted}; line-height:1.5; margin:0; `;
+export const SubDescription = styled.p`
+  font-size:.9rem; color:${({theme})=>theme.color.textMuted}; line-height:1.5; margin:0;
+`;
+
+/* =======================
+ * Q&A layout
+ * ======================= */
+export const PageIndicator = styled.div` color:#999; font-size:12px; `;
+export const QuestionSection = styled.div` text-align:center; margin-bottom:60px; `;
+export const QuestionText = styled.h2`
+  font-size:18px; font-weight:500; color:#333; line-height:1.4; margin:0;
+`;
+export const OptionsCol = styled.div` display:flex; flex-direction:column; gap:15px; margin-bottom:40px; `;
+
+/* =======================
+ * Result blocks
+ * ======================= */
+export const CharacterSection = styled.div` text-align:center; margin-bottom:20px; `;
+export const CharacterImageBox = styled.div`
+  display:inline-block; border:3px solid ${({theme})=>theme.color.primary};
+  border-radius:12px; overflow:hidden; margin-bottom:15px;
+`;
+export const CharacterImg = styled.img` width:200px; height:200px; object-fit:cover; display:block; `;
+export const Placeholder = styled.div`
+  width:200px; height:200px; display:grid; place-items:center; background:#eef1ff; color:#667eea; font-size:48px;
+`;
+
+export const CharacterInfo = styled.div` text-align:center; margin-bottom:20px; `;
+export const CharacterName = styled.h2` font-size:20px; font-weight:600; color:#333; margin:0 0 10px; `;
+export const PersonalityTag = styled.span`
+  background:${({theme})=>theme.color.warnBg}; color:${({theme})=>theme.color.warnText};
+  padding:8px 12px; border-radius:6px; font-size:13px; display:inline-block; border:1px solid ${({theme})=>theme.color.warnBorder};
+`;
+export const ResultDescWrap = styled.div` background:#fff; border-radius:8px; padding:20px 15px; margin-bottom:20px; `;
+export const ResultDesc = styled.p` font-size:14px; color:#333; line-height:1.5; margin:0 0 15px; text-align:center; `;
+export const Details = styled.div` margin-bottom:15px; `;
+export const DetailItem = styled.p` font-size:13px; color:#666; line-height:1.6; margin:0 0 8px; text-align:left; `;
+export const AdditionalInfo = styled.div` border-top:1px solid #eee; padding-top:15px; `;
+export const InfoLine = styled.p` font-size:13px; color:#666; line-height:1.5; margin:0 0 5px; `;
+
+export const RetryBtn = styled.button`
+  width:100%; background:#6c757d; color:#fff; border:none; border-radius:25px;
+  padding:12px 20px; font-size:14px; font-weight:500; cursor:pointer; transition: background .2s ease;
+  &:hover{ background:#5a6268; }
+`;
