@@ -5,6 +5,7 @@ import './App.css'
 import { Route, Routes, Link } from "react-router-dom";
 import SplashPage from './pages/RandingPage/RandingPage.SplashPage';
 import SelectMemberPage from './pages/RandingPage/RandingPage.SelectMemberPage';
+
 import CommunityHome from './pages/CommunityPage/CommunityHome';
 import CheerArtist from './pages/CommunityPage/Community.CheerArtist';
 import FandomTalk from './pages/CommunityPage/Community.FandomTalk';
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <>
       <Routes>
+        {/* 랜딩페이지 path */}
         <Route path="/" element={<SplashPage />} />
         <Route path="/selectMember" element={<SelectMemberPage />} />
 
