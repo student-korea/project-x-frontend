@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import '../css/FandomTalk.module.css';
+import './styled/FandomTalk.module.css';
 
 export const FandomTalk = () => {
     return(

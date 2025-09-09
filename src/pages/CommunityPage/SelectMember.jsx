@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import '../css/CheerArtist.module.css';
+import './styled/CheerArtist.module.css';
 
 const SelectMember = () => {
   return (

@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import '../css/community.css';
+import './styled/community.css';
+import '@/assets/images/CommunityPage/previous.png';
+
 
 export const CommunityHome = () => {
     return(
@@ -30,7 +32,7 @@ export const CommunityHome = () => {
 
             <div className='banner-container'>
               {/* 이전으로 넘어가기 */}
-              <div className='prevBtn'><img src="./img/previous.png" /></div>
+              <div className='prevBtn'><img src="@/assets/images/CommunityPage/previous.png" /></div>
               {/* 카드 배너 */}
               <div className='slider'>
             <div className='sectionTop'>

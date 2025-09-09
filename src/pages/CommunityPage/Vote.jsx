@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import '../css/vote.module.css';
+import './styled/vote.module.css';
 
 export const Vote = () => {
     return (
