@@ -1,9 +1,10 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+// src/main.jsx
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from "react-router-dom"
+import { createGlobalStyle } from "styled-components"
 import App from './App.jsx'
-import { BrowserRouter } from "react-router-dom";
-import { createGlobalStyle } from 'styled-components'
+import './index.css'
 
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -13,11 +14,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
     <GlobalStyle />
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </StrictMode>,
+  </React.StrictMode>,
 )
