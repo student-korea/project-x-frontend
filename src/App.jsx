@@ -17,8 +17,8 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route path="/" element={<SplashPage />} />
-        <Route path="/selectMember" element={<SelectMemberPage />} /> */}
+        <Route path="/" element={<SplashPage />} />
+        <Route path="/selectMember" element={<SelectMemberPage />} />
 
         {/* 커뮤니티 path */}
         <Route path="/CommunityHome" element={<CommunityHome />} />
