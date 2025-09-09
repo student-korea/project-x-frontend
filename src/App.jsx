@@ -7,9 +7,9 @@ import SplashPage from './pages/RandingPage/RandingPage.SplashPage';
 import SelectMemberPage from './pages/RandingPage/RandingPage.SelectMemberPage';
 import CommunityHome from './pages/CommunityPage/CommunityHome';
 import CheerArtist from './pages/CommunityPage/Community.CheerArtist';
-import FandomTalk from './pages/CommunityPage/FandomTalk';
-import Vote from './pages/CommunityPage/Vote';
-import SelectMember from './pages/CommunityPage/selectMember';
+import FandomTalk from './pages/CommunityPage/Community.FandomTalk';
+import Vote from './pages/CommunityPage/Community.Vote';
+import SelectMember from './pages/CommunityPage/Community.SelectMember';
 
 
 function App() {

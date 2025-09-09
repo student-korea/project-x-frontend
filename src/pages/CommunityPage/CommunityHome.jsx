@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './styled/community.css';
 import '@/assets/images/CommunityPage/previous.png';
-
+import Banner from '@/pages/CommunityPage/CommunityPage.CommunityHome.Banner';
 
 export const CommunityHome = () => {
     return(
@@ -27,51 +27,9 @@ export const CommunityHome = () => {
 
       <div className='ContentContainer'>
         {/* 배너부분 */}
+        
         <div className='Container'>
-          <section className='voting-section'>
-
-            <div className='banner-container'>
-              {/* 이전으로 넘어가기 */}
-              <div className='prevBtn'><img src="@/assets/images/CommunityPage/previous.png" /></div>
-              {/* 카드 배너 */}
-              <div className='slider'>
-            <div className='sectionTop'>
-              <div className='voteImg'><img src="./img/voteicon.png"></img></div>
-              <h1 className='section-title'>
-                투표하기
-              </h1>
-            </div>
-                <div className='slide'>
-                  <Link to="/vote">
-                  <div className='vote-card'>
-                    <div className='vote-content'>
-                        <h3 className='vote-title'>응원봉 투표하기</h3>
-                        <p className='vote-date'>2025.09.03~2025.09.24</p>
-                    </div>
-                    <div className='vote-img'><img src="./img/image2.png"></img></div>
-                  </div>
-                  </Link>
-                  {/* Vote 모달창 */}
-                  <div className='vote-card'>
-                    <div className='vote-content'>
-                        <h3 className='vote-title'>유닛조합 투표하기</h3>
-                        <p className='vote-date'>2025.09.03~2025.09.24</p>
-                    </div>
-                    <div className='vote-img'><img src="./img/image2.png"></img></div>
-                  </div>               
-                  <div className='vote-card'>
-                    <div className='vote-content'>
-                        <h3 className='vote-title'>투표결과 확인</h3>
-                        <p className='vote-date'>2025.09.03~2025.09.24</p>
-                    </div>
-                    <div className='vote-img'><img src="./img/image2.png"></img></div>
-                  </div>
-                </div>
-              </div>
-              {/* 다음으로 넘어가기 */}
-              <div className='nextBtn'><img src="./img/next.png" /></div>
-            </div>
-          </section>
+          <Banner></Banner>
         </div>
 
         {/* 게시판 콘텐츠 */}

@@ -88,6 +88,8 @@ a {
   border-radius: 15px;
 }
 .slider {
+  width: 100%;
+  overflow: hidden;
   height: 230px;
 }
 .slide{
