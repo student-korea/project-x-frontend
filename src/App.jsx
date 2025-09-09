@@ -2,9 +2,13 @@ import { useState } from 'react'
 import { Route, Routes, useLocation } from "react-router-dom";
 import './App.css'
 import SplashPage from './pages/RandingPage/RandingPage.SplashPage';
+
 import MDPage from './pages/MDPage/MDPage.main';
 import ProductDetail from './pages/MDPage/MDPage.ProductDetail';
 import Header from './pages/MDPage/Header';
+import SelectMemberPage from './pages/RandingPage/RandingPage.SelectMemberPage';
+
+
 
 function App() {
   const location = useLocation();
@@ -17,6 +21,7 @@ function App() {
                           location.pathname.startsWith('/MD/product/');
 
   return (
+
     <div style={{ width: '100vw', height: '100vh', margin: 0, padding: 0 }}>
       {shouldShowHeader && <Header />}
       <main>
@@ -28,9 +33,12 @@ function App() {
           <Route path="/community" element={<div>Community 페이지</div>} />
           <Route path="/content" element={<div>Content 페이지</div>} />
           <Route path="/chat" element={<div>Chat 페이지</div>} />
+          <Route path="/" element={<SplashPage />} />
+          <Route path="/selectMember" element={<SelectMemberPage />} />
         </Routes>
       </main>
     </div>
+
   )
 }
 
