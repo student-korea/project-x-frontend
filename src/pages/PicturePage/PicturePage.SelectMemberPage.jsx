@@ -6,7 +6,7 @@ import MemberCard from '@/pages/PicturePage/components/PicturePage.SelectMemberP
 import MemberChoice from '@/pages/PicturePage/components/PicturePage.SelectMemberPage.MemberChoice';
 import Next from '@/pages/PicturePage/components/PicturePage.SelectMemberPage.Next';
 
-function SelectMemberPage(){
+function PictureSelectMemberPage(){
     return (
         <div>
 
@@ -33,4 +33,4 @@ function SelectMemberPage(){
     );
 }
 
-export default SelectMemberPage
+export default PictureSelectMemberPage

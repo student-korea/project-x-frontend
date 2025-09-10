@@ -1,5 +1,6 @@
 import * as itemS from "@/pages/RandingPage/styled/RandingPage.SplashPage.style"
 import { useState } from "react"
+import { Link } from "react-router-dom";
 function SplashPage() {
     // 호버 가능한 상태인가 (첫 실행때는 애니메이션이 끝나기 전까지 호버 액션 적용 x)
     const [hoverAllowed, setHoverAllowed] = useState(false);
@@ -56,7 +57,9 @@ function SplashPage() {
                         </itemS.LetterFromTextWrapper>
                     </itemS.LetterTextContainer>   
                     <itemS.BtnWrapper>
-                        <itemS.NextBtn>시작하기</itemS.NextBtn>
+                            <Link to="/selectMember">
+                                <itemS.NextBtn>시작하기</itemS.NextBtn>
+                            </Link>
                     </itemS.BtnWrapper>   
                 </itemS.LetterWrapper>
             )}
