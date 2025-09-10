@@ -11,6 +11,7 @@ import CheerArtist from './pages/CommunityPage/Community.CheerArtist';
 import FandomTalk from './pages/CommunityPage/Community.FandomTalk';
 import Vote from './pages/CommunityPage/Community.Vote';
 import SelectMember from './pages/CommunityPage/Community.SelectMember';
+import ViewPage from './pages/RandingPage/RandingPage.SelectMemberPage.ViewPage';
 
 
 
@@ -22,6 +23,7 @@ export default function App() {
         {/* 랜딩페이지 path */}
         <Route path="/" element={<SplashPage />} />
         <Route path="/selectMember" element={<SelectMemberPage />} />
+        <Route path="/selectMember/view" element={<ViewPage />} />
 
         {/* 커뮤니티 path */}
         <Route path="/CommunityHome" element={<CommunityHome />} />
