@@ -73,7 +73,7 @@ export const CloseButton = styled.button`
 `;
 // 헤더 우측 진행 상태 표시
 export const ProgressInfo = styled.div`
-  font-size:14px; color:#eee; margin-top:5px;
+  font-size:12px; color:#eee; margin-top:3px;
   position:absolute; right:20px; top:50%; transform: translateY(-50%);
 `;
 // 모달 본문 컨텐츠 영역 (스크롤 가능)
@@ -199,7 +199,7 @@ export const SubDescription = styled.p` font-size:.9rem; color:${({theme})=>them
 export const PageIndicator = styled.div` color:#999; font-size:12px; `;
 export const QuestionSection = styled.div` text-align:center; margin-bottom:60px; `;
 export const QuestionText = styled.h2`
-  font-size:17px; font-weight:500; color:#333; line-height:1.4;
+  font-weight:500; color:#333; line-height:1.4;
   margin:40px; /* 질문 텍스트와 주변 여백 */
 `;
 export const OptionsCol = styled.div` display:flex; flex-direction:column; gap:15px; margin-bottom:40px; `;
