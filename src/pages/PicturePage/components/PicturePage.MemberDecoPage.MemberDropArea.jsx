@@ -1,9 +1,13 @@
 import React from "react";
 import MemberImg from "./PicturePage.MemberDecoPage.MemberImg";
+import { useLocation } from 'react-router-dom'
 
 import member from "@/assets/images/PicturePage/member3.png"
 
 function MemberDropArea({ wrapperRef, imgRef, decorations, onDrop, onDragOver }) {
+    const location = useLocation();
+    const { selectedMember } = location.state || {};
+
     return (
         <div
             ref={wrapperRef}
@@ -15,7 +19,7 @@ function MemberDropArea({ wrapperRef, imgRef, decorations, onDrop, onDragOver })
                 margin: "0 auto",
             }}
         >
-            <MemberImg imgRef={imgRef} imgSrc={member} />
+            <MemberImg imgRef={imgRef} imgSrc={selectedMember.imgSrc} />
 
             {decorations.map((deco, index) => (
                 <img

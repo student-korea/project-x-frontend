@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const container = styled.div`
     width: 100vw;
     margin: 0 auto;
@@ -42,6 +43,9 @@ export const member = styled.div`
       border-radius: 50%;
     }
     &:hover{
+      border: 2px solid #B3D1F0;
+    }
+    &.selected {
       border: 2px solid #B3D1F0;
     }
 `;
