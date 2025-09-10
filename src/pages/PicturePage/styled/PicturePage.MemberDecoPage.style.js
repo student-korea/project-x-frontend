@@ -15,7 +15,7 @@ export const member_img=styled.div`
     }
 `;
 export const deco_title=styled.div`
-    font-size:30px; font-weight: 800;
+    font-size:30px; font-weight: 800; margin: 0px 0;
 `;
 export const deco_imgs=styled.div`
     display:flex; justify-content: space-between; padding:30px 20px;

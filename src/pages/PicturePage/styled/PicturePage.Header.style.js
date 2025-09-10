@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
 export const header = styled.div`
-        width:100vw; height:75px; background-color: #B3D1F0;
-        display:flex; justify-content: center; align-items: center; text-align: center;
+        width:100vw; 
+        height:75px;
+        background-color: #B3D1F0;
+        display:flex; 
+        justify-content: center;
+        align-items: center;
+        text-align: center;
 `;
 export const logo = styled.div`
         width:20%; font-size:25px; font-weight: 800;
@@ -24,4 +29,5 @@ export const login = styled.div`
 `;
 export const login_text = styled.span`
         font-size:15px; font-weight: 600; margin-left: 5px;
+        height: 40px; line-height: 40px;
 `;
