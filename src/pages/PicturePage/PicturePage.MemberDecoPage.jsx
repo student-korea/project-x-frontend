@@ -7,13 +7,21 @@ import * as itemS from "@/pages/PicturePage/styled/PicturePage.MemberDecoPage.st
 import useDecorationDrop from "./hooks/PicturePage.MemberDecoPage.useDecorationDrop";
 import MemberDropArea from "./components/PicturePage.MemberDecoPage.MemberDropArea";
 
+import deco1 from "@/assets/images/PicturePage/deco1.png"
+import deco2 from "@/assets/images/PicturePage/deco2.png"
+import deco3 from "@/assets/images/PicturePage/deco3.png"
+import deco4 from "@/assets/images/PicturePage/deco4.png"
+import deco5 from "@/assets/images/PicturePage/deco5.png"
+import reset from "@/assets/images/PicturePage/reset.png"
+import next from "@/assets/images/PicturePage/next.png"
+
 // 데코 이미지
 const decoList = [
-    "/images/PicturePage/deco1.png",
-    "/images/PicturePage/deco2.png",
-    "/images/PicturePage/deco3.png",
-    "/images/PicturePage/deco4.png",
-    "/images/PicturePage/deco5.png",
+    deco1,
+    deco2,
+    deco3,
+    deco4,
+    deco5,
 ]
 
 function MemberDecoPage(){
@@ -58,10 +66,10 @@ function MemberDecoPage(){
 
                 <itemS.buttons>
                     <itemS.reset onClick={resetDecorations}>
-                        <img src="/images/PicturePage/reset.png" alt=""/>
+                        <img src={reset} alt=""/>
                     </itemS.reset>
                     <itemS.next onClick={handleNext}>
-                        <img src="/images/PicturePage/next.png" alt=""/>
+                        <img src={next} alt=""/>
                     </itemS.next>
                 </itemS.buttons>
             </itemS.container>
