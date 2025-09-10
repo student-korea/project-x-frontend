@@ -13,8 +13,8 @@ import Vote from './pages/CommunityPage/Community.Vote';
 import SelectMember from './pages/CommunityPage/Community.SelectMember';
 import ViewPage from './pages/RandingPage/RandingPage.SelectMemberPage.ViewPage';
 
-
-
+import ChatApp from './pages/ChatbotPage/Chatbot.Chatapp';
+import ChatChoice from './pages/ChatbotPage/Chatbot.ChatChoice';
 
 export default function App() {
   return (
@@ -31,6 +31,10 @@ export default function App() {
         <Route path="/Community/CheerArtist" element={<CheerArtist />} />
         <Route path="/Community/SelectMember" element={<SelectMember />} />
         <Route path="/Community/FandomTalk" element={<FandomTalk />} />
+
+        {/* 챗봇 path */}
+        <Route path="/ChatApp/:chatName" element={<ChatApp />} />
+        <Route path="/Chatchoice" element={<ChatChoice />} />
       </Routes>
     </>
   )
