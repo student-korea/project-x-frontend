@@ -7,8 +7,9 @@ import SplashPage from './pages/RandingPage/RandingPage.SplashPage';
 import SelectMemberPage from './pages/RandingPage/RandingPage.SelectMemberPage';
 
 
-function App() {
 
+
+export default function App() {
   return (
     <>
       <Routes>
@@ -19,4 +20,3 @@ function App() {
   )
 }
 
-export default App
