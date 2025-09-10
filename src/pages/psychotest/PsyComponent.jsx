@@ -33,8 +33,8 @@ export function StartPage({ onStart, onClose }) {
           </MainDescription>
           {/* 테스트 소요/문항 수 pill */}
           <TestInfo aria-hidden>
-            <Pill><InfoIcon>⏱️</InfoIcon><span>약 2분</span></Pill>
-            <Pill><InfoIcon>📝</InfoIcon><span>9문항</span></Pill>
+            <Pill><InfoIcon>⏱️</InfoIcon><span>약 1분</span></Pill>
+            <Pill><InfoIcon>📝</InfoIcon><span>11문항</span></Pill>
           </TestInfo>
           <SubDescription>
             12가지 매력적인 성격 유형 중에서<br />
