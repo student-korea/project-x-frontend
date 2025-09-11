@@ -1,19 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function CTASection({ selectedMemberId }) {
+function CTASection({ S, selectedMemberId }) {
     return (
-        <div className="cta-section">
-            <div className="cta-text">함께 대화하고 싶은 멤버를 골라 주세요!</div>
+        <S.CTASection>
+            <S.CTAText>함께 대화하고 싶은 멤버를 골라 주세요!</S.CTAText>
             <Link to={selectedMemberId ? `/ChatApp/${selectedMemberId}` : '#'}>
-                <button 
-                    className="next-btn"
-                    disabled={!selectedMemberId}
-                >
+                <S.NextBtn disabled={!selectedMemberId}>
                     다음 ➤
-                </button>
+                </S.NextBtn>
             </Link>
-        </div>
+        </S.CTASection>
     );
 }
 

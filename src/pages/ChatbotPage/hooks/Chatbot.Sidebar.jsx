@@ -1,35 +1,52 @@
-// src/components/Sidebar.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  Sidebar as StyledSidebar,
+  SidebarHeader,
+  SidebarTitle,
+  SidebarTitleText,
+  ContactsList,
+  ContactItem,
+  ContactContent,
+  ContactAvatar,
+  ContactInfo,
+  ContactName,
+  ContactMessage,
+  ContactTime,
+  UnreadDot,
+  AvatarImg,
+  LinkNoStyle
+} from '../styled/ChatApp.js';
 
 const Sidebar = ({ contacts, selectedChat }) => {
   return (
-    <div className="sidebar">
-      <div className="sidebar-header">
-        <div className="sidebar-title">
+    <StyledSidebar>
+      <SidebarHeader>
+        <SidebarTitle>
           <span>💬</span>
-          <h2 className="sidebar-title-text">대화 상대 선택</h2>
-        </div>
-      </div>
-      <div className="contacts-list">
+          <SidebarTitleText>대화 상대 선택</SidebarTitleText>
+        </SidebarTitle>
+      </SidebarHeader>
+      <ContactsList>
         {contacts.map((contact) => (
-          <Link to={`/ChatApp/${contact.englishName}`} key={contact.englishName} className="link-no-style">
-            <div className={`contact-item ${selectedChat.englishName === contact.englishName ? 'active' : ''}`}>
-              <div className="contact-content">
-                <div className="contact-avatar">
-                  <img src={contact.avatarUrl} alt={`${contact.name} Avatar`} className="avatar-img" />
-                </div>
-                <div className="contact-info">
-                  <div className="contact-name">{contact.name}</div>
-                  <div className="contact-message">{contact.lastMessage}</div>
-                </div>
-                <div className="contact-time">{contact.time}</div>
-              </div>
-            </div>
+          <Link to={`/ChatApp/${contact.englishName}`} key={contact.englishName}>
+            <ContactItem $isActive={selectedChat.englishName === contact.englishName}>
+              <ContactContent>
+                <ContactAvatar>
+                  <AvatarImg size="48px" src={contact.avatarUrl} alt={`${contact.name} Avatar`} />
+                </ContactAvatar>
+                <ContactInfo>
+                  <ContactName>{contact.name}</ContactName>
+                  <ContactMessage>{contact.lastMessage}</ContactMessage>
+                </ContactInfo>
+                <ContactTime>{contact.time}</ContactTime>
+                {contact.unread && <UnreadDot />}
+              </ContactContent>
+            </ContactItem>
           </Link>
         ))}
-      </div>
-    </div>
+      </ContactsList>
+    </StyledSidebar>
   );
 };
 

@@ -1,65 +1,74 @@
-// src/components/MessageArea.jsx
-import React, { useRef, useEffect } from 'react';
-import { findContactByNameOrEnglish } from '../utils/helpers';
+// src/ChatbotPage/MessageArea.jsx
+import React, { useEffect } from 'react';
+import {
+  MessagesArea,
+  DateDivider,
+  DateBtn,
+  Message,
+  MessageContent,
+  MessageAvatar,
+  MessageSenderName,
+  MessageBubble,
+  MessageTime,
+  AvatarImg,
+  MessageFooter,
+  LikeDislikeButtons,
+  LikeButton,
+  DislikeButton
+} from '../styled/ChatApp.js';
 
 const MessageArea = ({ selectedChat, contacts, messagesEndRef, handleFeedback }) => {
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-  
+  // 메시지가 추가될 때마다 자동으로 스크롤
   useEffect(() => {
-    scrollToBottom();
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [selectedChat.messages]);
 
+  const getSenderAvatar = (senderEnglishName) => {
+    const sender = contacts.find(contact => contact.englishName === senderEnglishName);
+    return sender ? sender.avatarUrl : null;
+  };
+
   return (
-    <div className="messages-area">
-      <div className="date-divider">
-        <button className="date-btn">오늘</button>
-        <p className="date-text">{selectedChat.name}과의 대화가 시작되었습니다</p>
-      </div>
-      {selectedChat.messages?.map((message) => (
-        <div key={message.id} className={`message ${message.sender === 'user' ? 'user' : ''}`}>
-          <div className={`message-content ${message.sender === 'user' ? 'user' : ''}`}>
-            {message.sender !== 'user' && (
-              <div className="message-avatar">
-                <img 
-                  src={findContactByNameOrEnglish(contacts, message.sender)?.avatarUrl || '/images/user_default.png'} 
-                  alt={`${message.sender} Avatar`} 
-                  className="avatar-img" 
-                />
+    <MessagesArea>
+      <DateDivider>
+        <DateBtn>오늘</DateBtn>
+      </DateDivider>
+
+      {selectedChat.messages.map((message) => {
+        const isUser = message.sender === 'user';
+        const avatarUrl = getSenderAvatar(message.sender);
+
+        return (
+          <Message key={message.id} $isUser={isUser}>
+            <MessageContent $isUser={isUser}>
+              {!isUser && (
+                <MessageAvatar>
+                  {avatarUrl ? (
+                    <AvatarImg size="50px" src={avatarUrl} alt={`${selectedChat.name} Avatar`} />
+                  ) : (
+                    '👤' // 아바타 이미지가 없을 경우 기본 아이콘
+                  )}
+                </MessageAvatar>
+              )}
+              <div>
+                {!isUser && <MessageSenderName>{selectedChat.name}</MessageSenderName>}
+                <MessageBubble $isUser={isUser}>{message.text}</MessageBubble>
+                <MessageFooter>
+                  <MessageTime>{message.time}</MessageTime>
+                  {!isUser && (
+                    <LikeDislikeButtons>
+                      <LikeButton onClick={() => handleFeedback('like')}>👍</LikeButton>
+                      <DislikeButton onClick={() => handleFeedback('dislike')}>👎</DislikeButton>
+                    </LikeDislikeButtons>
+                  )}
+                </MessageFooter>
               </div>
-            )}
-            <div>
-              {message.sender !== 'user' && (
-                <div className="message-sender-name">
-                  {findContactByNameOrEnglish(contacts, message.sender)?.name || message.sender}
-                </div>
-              )}
-              <div className={`message-bubble ${message.sender === 'user' ? 'user' : 'bot'}`}>
-                {message.text}
-              </div>
-              {message.sender !== 'user' && (
-                <div className="message-footer">
-                  <div className="like-dislike-buttons">
-                    <button className="like-button" onClick={() => handleFeedback('like')}>👍</button>
-                    <button className="dislike-button" onClick={() => handleFeedback('dislike')}>👎</button>
-                  </div>
-                  <div className="message-time">
-                    {message.time}
-                  </div>
-                </div>
-              )}
-              {message.sender === 'user' && (
-                <div className="message-time user">
-                  {message.time}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      ))}
+            </MessageContent>
+          </Message>
+        );
+      })}
       <div ref={messagesEndRef} />
-    </div>
+    </MessagesArea>
   );
 };
 

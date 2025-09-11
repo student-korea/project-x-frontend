@@ -1,23 +1,23 @@
 import React from 'react';
 
-function Header() {
+function Header({ S }) {
     return (
-        <header className="header">
-            <div className="nav-container">
-                <div className="logo">Project - X</div>
-                <nav className="nav-menu">
-                    <a href="#" className="nav-item">Home</a>
-                    <a href="#" className="nav-item">MD</a>
-                    <a href="#" className="nav-item">Community</a>
-                    <a href="#" className="nav-item">Content</a>
-                    <a href="#" className="nav-item">Chat</a>
-                </nav>
-                <a href="#" className="login-btn">
+        <S.Header>
+            <S.NavContainer>
+                <S.Logo>Project - X</S.Logo>
+                <S.NavMenu>
+                    <S.NavItem href="#">Home</S.NavItem>
+                    <S.NavItem href="#">MD</S.NavItem>
+                    <S.NavItem href="#">Community</S.NavItem>
+                    <S.NavItem href="#">Content</S.NavItem>
+                    <S.NavItem href="#">Chat</S.NavItem>
+                </S.NavMenu>
+                <S.LoginBtn href="#">
                     <span>👤</span>
                     로그인
-                </a>
-            </div>
-        </header>
+                </S.LoginBtn>
+            </S.NavContainer>
+        </S.Header>
     );
 }
 
